@@ -1,0 +1,10 @@
+<h1>Comics</h1>
+<div class="grid col-8 gap1">
+    @for (comic of comics; track $index) {
+        <div class="btn">
+            <img src="{{comic.imagen}}" alt="">
+            <h2>{{comic.titulo}}</h2>
+            <p>{{comic.descripcion}}</p>
+        </div>
+    }
+</div>

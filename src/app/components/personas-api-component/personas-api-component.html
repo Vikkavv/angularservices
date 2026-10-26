@@ -1,0 +1,10 @@
+<h1>Personas</h1>
+<div class="grid col-4 gap1">
+    @for (persona of personas; track $index) {
+        <div class="btn">
+            <h2>{{persona.Nombre}}</h2>
+            <p>{{persona.Email}}</p>
+            <p>{{persona.Edad}} Años</p>
+        </div>
+    }
+</div>
