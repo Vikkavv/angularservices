@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-component',
@@ -6,4 +7,16 @@ import { Component } from '@angular/core';
   styleUrl: './menu-component.css',
   templateUrl: './menu-component.html',
 })
-export class MenuComponent {}
+export class MenuComponent {
+
+  @ViewChild('searched') searched!: ElementRef;
+
+  constructor(private _router: Router) {
+    this.searched = new ElementRef("");
+  }
+
+  redirectToSearch(){
+    this._router.navigate(["/search", this.searched.nativeElement.value]);
+  }
+
+}

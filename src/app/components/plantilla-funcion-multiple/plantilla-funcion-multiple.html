@@ -1,0 +1,41 @@
+<h1>Plantilla funciones Multiple</h1>
+<br>
+<form class="grid gap1 w-fitContent" #form="ngForm" (ngSubmit)="recibirDatos()">
+    <div>
+        <label for="funcionSelect">Funciones</label>
+        <select class="form-control" name="funcionSelect" id="funcionSelect" #funcionSelect multiple>
+            @for (funcion of funciones; track $index) {
+                <option value="{{funcion}}" >{{funcion}}</option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-outline-success" type="submit" >Mostrar plantilla</button>
+</form>
+<br><br>
+
+@if(plantilla.length > 0){
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Apellido</th>
+                <th>Funcion</th>
+                <th>Turno</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (empleado of plantilla; track $index) {
+                <tr>
+                    <td>{{empleado.idEmpleado}}</td>
+                    <td>{{empleado.apellido}}</td>
+                    <td>{{empleado.funcion}}</td>
+                    <td>{{empleado.turno}}</td>
+                    <td>{{empleado.salario}}€</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

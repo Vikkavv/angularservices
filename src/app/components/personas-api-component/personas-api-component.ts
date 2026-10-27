@@ -14,10 +14,16 @@ export class PersonasApiComponent implements OnInit {
 
   constructor(private _detector: ChangeDetectorRef, private _service: PersonasService) {}
 
-  ngOnInit(): void {
-    this._service.getPersonas().subscribe((personas) => {
+  async ngOnInit(): Promise<void> {
+    /*this._service.getPersonas().subscribe((personas) => {
       this.personas = personas;
       this._detector.detectChanges();
-    });
+    });*/
+    this._service.getPersonasPromise().then((personas) => {
+      this.personas = personas;
+      this._detector.detectChanges();
+    })
+
+    this.personas = await this._service.getPersonasAsync();
   }
 }
